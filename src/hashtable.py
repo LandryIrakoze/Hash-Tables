@@ -16,7 +16,6 @@ class HashTable:
         self.capacity = capacity  # Number of buckets in the hash table
         self.storage = [None] * capacity
 
-
     def _hash(self, key):
         '''
         Hash an arbitrary key and return an integer.
@@ -24,7 +23,6 @@ class HashTable:
         You may replace the Python hash with DJB2 as a stretch goal.
         '''
         return hash(key)
-
 
     def _hash_djb2(self, key):
         '''
@@ -34,14 +32,12 @@ class HashTable:
         '''
         pass
 
-
     def _hash_mod(self, key):
         '''
         Take an arbitrary key and return a valid integer index
         within the storage capacity of the hash table.
         '''
         return self._hash(key) % self.capacity
-
 
     def insert(self, key, value):
         '''
@@ -51,9 +47,12 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
-
-
+        if self._hash_mod(key) in self.storage:
+            print('Error: key exists')
+        else:
+            self.storage[self._hash_mod(key)] = value
+            print(self.storage)
+            # print(self._hash_mod(key))
 
     def remove(self, key):
         '''
@@ -63,8 +62,10 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
-
+        if self._hash_mod(key) in self.storage:
+            self.storage[self._hash_mod(key)] = None
+        else:
+            print('key is not found')
 
     def retrieve(self, key):
         '''
@@ -74,8 +75,10 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
-
+        if self._hash_mod(key) in self.storage:
+            return self.storage[self._hash_mod(key)]
+        else:
+            return None
 
     def resize(self):
         '''
@@ -85,8 +88,9 @@ class HashTable:
         Fill this in.
         '''
         pass
-
-
+        # ht_copy = HashTable(self.capacity * 2)
+        # self.capacity *= 2
+        
 
 if __name__ == "__main__":
     ht = HashTable(2)

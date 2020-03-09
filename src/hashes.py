@@ -15,3 +15,5 @@ index3 = hash(key3) % 8
 print(index)
 print(index2)
 print(index3)
+
+print(hash('test'))
