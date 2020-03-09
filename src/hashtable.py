@@ -51,8 +51,6 @@ class HashTable:
             print('Error: key exists')
         else:
             self.storage[self._hash_mod(key)] = value
-            print(self.storage)
-            # print(self._hash_mod(key))
 
     def remove(self, key):
         '''
@@ -75,7 +73,7 @@ class HashTable:
 
         Fill this in.
         '''
-        if self._hash_mod(key) in self.storage:
+        if self._hash_mod(key) < self.capacity and self.storage[self._hash_mod(key)] != None:
             return self.storage[self._hash_mod(key)]
         else:
             return None
@@ -95,9 +93,11 @@ class HashTable:
 if __name__ == "__main__":
     ht = HashTable(2)
 
+    print(ht.storage)
     ht.insert("line_1", "Tiny hash table")
     ht.insert("line_2", "Filled beyond capacity")
     ht.insert("line_3", "Linked list saves the day!")
+    print(ht.storage)
 
     print("")
 

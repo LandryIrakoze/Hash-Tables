@@ -12,8 +12,11 @@ key3 = b'lunchtime'
 index = hash(key) % 8
 index2 = hash(key2) % 8
 index3 = hash(key3) % 8
+index4 = hash(key) % 8
+
 print(index)
 print(index2)
 print(index3)
+print(index4)
 
-print(hash('test'))
+# print(hash('test'))
