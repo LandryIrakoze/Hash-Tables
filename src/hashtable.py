@@ -60,7 +60,7 @@ class HashTable:
 
         Fill this in.
         '''
-        if self._hash_mod(key) in self.storage:
+        if self._hash_mod(key) < self.capacity and self.storage[self._hash_mod(key)] != None:
             self.storage[self._hash_mod(key)] = None
         else:
             print('key is not found')
